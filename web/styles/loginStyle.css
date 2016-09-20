@@ -1,0 +1,44 @@
+body {
+    background-color: #e1e1e1;
+}
+
+.loginBlock {
+    margin: 50px auto auto;
+    width:550px;
+    text-align: center;
+    padding: 10px;
+    background-color: white;
+}
+
+.hor {
+    border-top: 2px solid brown;
+    border-bottom: 2px solid brown;
+    padding: 2px;
+}
+
+.vert {
+    border-left: 2px solid brown;
+    border-right: 2px solid brown;
+    padding: 2px;
+}
+
+table {
+    width: 300px;
+    margin: 10px auto 10px auto;
+    padding-left: 10px;
+}
+
+td {
+    padding: 3px;
+    vertical-align: middle;
+}
+
+h4 {
+    padding: 0;
+    margin: 0;
+}
+
+h3 {
+    text-align: center;
+    margin: 10px;
+}
