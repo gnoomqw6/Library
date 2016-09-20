@@ -63,7 +63,6 @@
     </div>
     <div class="content">
         <form class="searchForm" name="searchForm" method="post">
-            <img src="../images/search.png" alt="search" />
             <span>Поиск по:</span>
             <select class="selectBy" name="selectBy">
                 <option class="selectByOption">

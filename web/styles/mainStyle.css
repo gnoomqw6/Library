@@ -94,8 +94,8 @@ body {
 }
 
 .genres {
-    padding: 75px 30px 50px 0;
-    width: 18%;
+    padding: 65px 30px 50px 0;
+    width: 15%;
     float: left;
     position: relative;
 }
@@ -110,8 +110,7 @@ body {
 }
 
 .genreItem {
-    margin-bottom: 10px;
-    padding: 10px 30px 10px 30px;
+    padding: 6px 30px 6px 30px;
     cursor: pointer ;
 }
 
@@ -125,7 +124,7 @@ body {
 }
 
 .content {
-    padding: 75px 20px 50px 20%;
+    padding: 77px 20px 50px 18%;
 }
 
 .searchForm {
@@ -134,12 +133,6 @@ body {
 
 .searchForm * {
     margin-right: 10px;
-}
-
-.searchForm img {
-    height: 30px;
-    position: relative;
-    top: 10px;
 }
 
 .selectBy, .selectBy * {
