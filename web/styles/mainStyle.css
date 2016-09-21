@@ -94,7 +94,7 @@ body {
 }
 
 .genres {
-    padding: 65px 30px 50px 0;
+    padding: 65px 0px 50px 0;
     width: 15%;
     float: left;
     position: relative;
@@ -110,8 +110,14 @@ body {
 }
 
 .genreItem {
-    padding: 6px 30px 6px 30px;
-    cursor: pointer ;
+    cursor: pointer;
+}
+
+.genreItem a {
+    display: block;
+    padding: 6px 0px 6px 30px;
+    color: #d7d7d7;
+    text-decoration: none;
 }
 
 .genreItem:hover {

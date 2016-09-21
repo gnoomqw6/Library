@@ -17,19 +17,23 @@
     <div class="genres">
         <h4>Книги по жанрам:</h4>
         <ul>
-            <%
+            <%--<%
                 GenreList genreList = new GenreList();
                 for (Genre genre : genreList.getGenreList()) {
             %>
             <li class="genreItem"><%=genre.getName()%></li>
-            <%}%>
+            <%}%>--%>
 
-            <%--code below doesn't work--%>
-
-            <%--<jsp:useBean id="genreList" class="bean.GenreList" scope="session"/>
-            <c:forEach var="genre" items="${genreList.getGenreList()}">
-                <li class="genreItem">${genre.name}</li>
-            </c:forEach>--%>
+            <jsp:useBean id="genreList" class="bean.GenreList" scope="application"/>
+            <%
+                for (Genre genre : genreList.getGenreList()) {
+            %>
+                    <li class="genreItem">
+                        <a href="books.jsp?genre_id=<%=genre.getId()%>&genre_name=<%=genre.getName()%>"><%=genre.getName()%></a>
+                    </li>
+            <%
+                }
+            %>
 
         </ul>
     </div>
