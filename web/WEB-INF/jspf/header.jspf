@@ -1,0 +1,64 @@
+<%@ page pageEncoding="UTF-8" %>
+
+<%@ page import="bean.Genre" %>
+<%@ page import="bean.GenreList" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Библиотека</title>
+    <link rel="stylesheet" href="../styles/mainStyle.css" type="text/css" />
+</head>
+<body>
+
+    <% request.setCharacterEncoding("UTF-8"); %>
+<div class="container">
+    <div class="genresBack"></div>
+    <div class="genres">
+        <h4>Книги по жанрам:</h4>
+        <ul>
+            <%
+                GenreList genreList = new GenreList();
+                for (Genre genre : genreList.getGenreList()) {
+            %>
+            <li class="genreItem"><%=genre.getName()%></li>
+            <%}%>
+
+            <%--code below doesn't work--%>
+
+            <%--<jsp:useBean id="genreList" class="bean.GenreList" scope="session"/>
+            <c:forEach var="genre" items="${genreList.getGenreList()}">
+                <li class="genreItem">${genre.name}</li>
+            </c:forEach>--%>
+
+        </ul>
+    </div>
+    <div class="header">
+        <div class="user">
+            <%
+                String username = (String) request.getSession().getAttribute("username");
+                if (username == null) {
+                    username = request.getParameter("username");
+                    request.getSession().setAttribute("username", username);
+                }
+
+                String countBooks;
+                if (request.getSession().getAttribute("box") == null) {
+                    countBooks = "0";
+                } else {
+                    countBooks = (String) request.getSession().getAttribute("box");
+                }
+            %>
+            <span>Здравствуйте, <%= username %></span><br>
+            <span>Книг в корзине: <%= countBooks %></span>
+        </div>
+        <div class="menu">
+            <img class="headerImage" src="../images/book.png" alt="library" />
+            <ul class="menuList">
+                <li class="menuItem">Новые поступления</li>
+                <li class="menuItem">Популярные</li>
+                <li class="menuItem">Акции</li>
+                <li class="menuItem">Контакты</li>
+            </ul>
+        </div>
+    </div>
