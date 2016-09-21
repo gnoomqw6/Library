@@ -1,16 +1,37 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Sergey
-  Date: 21.09.2016
-  Time: 15:57
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="bean.Book" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<div class="content">
+    <%@include file="../WEB-INF/jspf/searchForm.jspf"%>
 
-</body>
-</html>
+    <%request.setCharacterEncoding("UTF-8");
+        int genreId = -1;   //задаем начальное значение -1 для последующей проверки и перенаправления в случае, если это значение останется -1
+
+        try {
+            genreId = Integer.parseInt(request.getParameter("genre_id"));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    %>
+
+    <jsp:useBean id="bookList" class="bean.BookList" scope="page"/>
+
+    <div class="books">
+
+        <h3>${param.genre_name}</h3>
+        <h3>${param.genre_id}</h3>
+
+        <%
+            for (Book book : bookList.getBooksByGenre(genreId)) {
+        %>
+                <div class="bookItem">
+                    <%=book.getName()%><br>
+                    <%=book.getAuthor()%><br>
+                    <%=book.getPageCount()%><br>
+                    <%=book.getPublisher()%><br>
+                    <%=book.getYear()%><br>
+                    <%=book.getIsbn()%><br>
+                    <%=book.getImageNumber()%><br>
+                </div>
+        <%}%>
+    </div>
+</div>
