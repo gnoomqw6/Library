@@ -26,7 +26,7 @@ public class BookList {
             while (resultSet.next()) {
                 Book book = new Book(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getInt("page_count"),
                         resultSet.getString("isbn"), resultSet.getString("genre"),
-                        resultSet.getString("author"), resultSet.getInt("publish_year"),
+                        resultSet.getString("fio"), resultSet.getInt("publish_year"),
                         resultSet.getString("publisher"), resultSet.getInt("image_number"));
                 bookList.add(book);
             }
