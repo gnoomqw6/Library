@@ -17,21 +17,22 @@
 
     <div class="books">
 
-        <h3>${param.genre_name}</h3>
-        <h3>${param.genre_id}</h3>
+        <h3>Жанр: ${param.genre_name}</h3>
+        <h3>ID жанра в базе: ${param.genre_id}</h3>
 
-        <%
-            for (Book book : bookList.getBooksByGenre(genreId)) {
-        %>
-                <div class="bookItem">
-                    <%=book.getName()%><br>
-                    <%=book.getAuthor()%><br>
-                    <%=book.getPageCount()%><br>
-                    <%=book.getPublisher()%><br>
-                    <%=book.getYear()%><br>
-                    <%=book.getIsbn()%><br>
-                    <%=book.getImageNumber()%><br>
-                </div>
-        <%}%>
+        <% int counter = 0;
+            for (Book book : bookList.getBooksByGenre(genreId)) { %>
+            <div class="bookItem">
+                <%=book.getName()%><br>
+                <%=book.getAuthor()%><br>
+                <%=book.getPageCount()%><br>
+                <%=book.getPublisher()%><br>
+                <%=book.getYear()%><br>
+                <%=book.getIsbn()%><br>
+                <%=book.getImageNumber()%><br>
+            </div>
+        <% counter++;} %>
+
+        <h3>List have <%=counter%> elements (!!!bug if 0)</h3>
     </div>
 </div>

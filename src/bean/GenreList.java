@@ -11,7 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GenreList {
-    private static ArrayList<Genre> genreArrayList = new ArrayList<>();
+    private ArrayList<Genre> genreArrayList = new ArrayList<>();
 
     private void getGenres() {
         Statement statement = null;
