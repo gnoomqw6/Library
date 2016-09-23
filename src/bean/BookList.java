@@ -19,7 +19,7 @@ public class BookList {
         ResultSet resultSet = null;
 
         try {
-            connection = Database.getConnection();
+            connection = Database.getDataSource().getConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery(sqlRequest);
 
@@ -46,7 +46,7 @@ public class BookList {
     }
 
     public ArrayList<Book> getBooksByGenre(int id) {
-        return getBooks("select book.id, book.name, genre.name as genre," +
+        return getBooks("select book.id, book.name, genre_id, genre.name as genre," +
                 "author.fio, page_count, publisher.name as publisher," +
                 "publish_year, isbn, image_number from book" +
                 "inner join author on book.author_id = author.id" +

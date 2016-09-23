@@ -18,7 +18,7 @@ public class GenreList {
         ResultSet resultSet = null;
         Connection connection = null;
         try {
-            connection = Database.getConnection();
+            connection = Database.getDataSource().getConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery("select * from genre ORDER BY name");
             while (resultSet.next()) {
