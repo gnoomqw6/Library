@@ -1,5 +1,3 @@
-/*7568345 мельниченко*/
-
 html {
     padding: 0;
     margin: 0;
@@ -11,7 +9,6 @@ body {
     margin: 0;
     color: #d7d7d7;
     font-family: arial;
-    /*height: 100%;*/
 }
 
 .container {
@@ -86,7 +83,7 @@ body {
 .genresBack {
     padding-top: 75px;
     padding-left: 30px;
-    width: 20%;
+    width: 15%;
     float: left;
     padding-bottom: 5000px;
     margin-bottom: -5000px;
@@ -94,7 +91,7 @@ body {
 }
 
 .genres {
-    padding: 65px 30px 50px 0;
+    padding: 65px 0px 50px 0;
     width: 15%;
     float: left;
     position: relative;
@@ -110,8 +107,14 @@ body {
 }
 
 .genreItem {
-    padding: 6px 30px 6px 30px;
-    cursor: pointer ;
+    cursor: pointer;
+}
+
+.genreItem a {
+    display: block;
+    padding: 6px 0px 6px 30px;
+    color: #d7d7d7;
+    text-decoration: none;
 }
 
 .genreItem:hover {
@@ -125,10 +128,6 @@ body {
 
 .content {
     padding: 77px 20px 50px 18%;
-}
-
-.searchForm {
-    /*border: 1px solid white;*/
 }
 
 .searchForm * {
@@ -209,4 +208,20 @@ h2 {
     margin-top: -30px;
     text-align: center;
     padding-top: 5px;
+}
+
+.bookItem {
+    width: 30%;
+    height: 550px;
+    float: left;
+    padding-right: 30px;
+}
+
+.bookItem img {
+    height: 300px;
+}
+
+.bookItem a {
+    color: #d7d7d7;
+    text-decoration: none;
 }

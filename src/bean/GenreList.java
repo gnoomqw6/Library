@@ -11,18 +11,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GenreList {
-    private static ArrayList<Genre> genreArrayList = new ArrayList<Genre>();
+    private ArrayList<Genre> genreArrayList = new ArrayList<>();
 
-    private static void getGenres() {
+    private void getGenres() {
         Statement statement = null;
         ResultSet resultSet = null;
         Connection connection = null;
         try {
-            connection = Database.getConnection();
+            connection = Database.getDataSource().getConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery("select * from genre ORDER BY name");
             while (resultSet.next()) {
-                Genre genre = new Genre(resultSet.getString("name"));
+                Genre genre = new Genre(resultSet.getString("name"), resultSet.getInt("id"));
                 genreArrayList.add(genre);
             }
 
@@ -39,7 +39,7 @@ public class GenreList {
         }
     }
 
-    public static ArrayList<Genre> getGenreList() {
+    public ArrayList<Genre> getGenreList() {
         if (genreArrayList.isEmpty()) {
             getGenres();
         }

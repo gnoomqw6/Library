@@ -11,24 +11,24 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BookList {
-    private ArrayList<Book> bookArrayList = new ArrayList<>();
+    private ArrayList<Book> getBooks(String sqlRequest) {
+        ArrayList<Book> bookList = new ArrayList<>();
 
-    private ArrayList<Book> getBooks() {
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
 
         try {
-            connection = Database.getConnection();
+            connection = Database.getDataSource().getConnection();
             statement = connection.createStatement();
-            resultSet = statement.executeQuery("SELECT * FROM book");
+            resultSet = statement.executeQuery(sqlRequest);
 
             while (resultSet.next()) {
-                Book book = new Book(resultSet.getString("name"), resultSet.getInt("page_count"),
-                        resultSet.getString("isbn"), resultSet.getInt("genre_id"),
-                        resultSet.getInt("author_id"), resultSet.getInt("publish_year"),
-                        resultSet.getInt("publisher_id"));
-                bookArrayList.add(book);
+                Book book = new Book(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getInt("page_count"),
+                        resultSet.getString("isbn"), resultSet.getString("genre"),
+                        resultSet.getString("fio"), resultSet.getInt("publish_year"),
+                        resultSet.getString("publisher"), resultSet.getInt("image_number"));
+                bookList.add(book);
             }
         } catch (SQLException e) {
             Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, e);
@@ -42,14 +42,16 @@ public class BookList {
             }
         }
 
-        return bookArrayList;
+        return bookList;
     }
 
-    public ArrayList<Book> getBookArrayList() {
-        if (bookArrayList.isEmpty()) {
-            return getBooks();
-        } else {
-            return bookArrayList;
-        }
+    public ArrayList<Book> getBooksByGenre(int id) {
+        return getBooks("select book.id, book.`name`, genre_id, genre.`name` as genre, " +
+                "author.fio, page_count, publisher.`name` as publisher, " +
+                "publish_year, isbn, image_number from book " +
+                "inner join author on book.author_id = author.id " +
+                "inner join genre on book.genre_id = genre.id " +
+                "inner join publisher on book.publisher_id = publisher.id " +
+                "where genre_id = " + id + " order by name;");
     }
 }

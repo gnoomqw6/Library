@@ -1,29 +1,38 @@
 package bean;
 
-import java.awt.*;
-
 public class Book {
+    private int id;
     private String name;
     private byte[] content;
     private int pageCount;
     private String isbn;
-    private int genreId;
-    private int authorId;
+    private String genre;
+    private String author;
     private int year;
-    private int publisherId;
-    private Image image;
+    private String publisher;
+    private int imageNumber;
 
     public Book() {
     }
 
-    public Book(String name, int pageCount, String isbn, int genreId, int authorId, int year, int publisherId) {
+    public Book(int id, String name, int pageCount, String isbn, String genre, String author, int year, String publisher, int imageNumber) {
+        this.id = id;
         this.name = name;
         this.pageCount = pageCount;
         this.isbn = isbn;
-        this.genreId = genreId;
-        this.authorId = authorId;
+        this.genre = genre;
+        this.author = author;
         this.year = year;
-        this.publisherId = publisherId;
+        this.publisher = publisher;
+        this.imageNumber = imageNumber;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -58,20 +67,20 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public int getGenreId() {
-        return genreId;
+    public String getGenre() {
+        return genre;
     }
 
-    public void setGenreId(int genreId) {
-        this.genreId = genreId;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
-    public int getAuthorId() {
-        return authorId;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public int getYear() {
@@ -82,19 +91,19 @@ public class Book {
         this.year = year;
     }
 
-    public int getPublisherId() {
-        return publisherId;
+    public String getPublisher() {
+        return publisher;
     }
 
-    public void setPublisherId(int publisherId) {
-        this.publisherId = publisherId;
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
 
-    public Image getImage() {
-        return image;
+    public int getImageNumber() {
+        return imageNumber;
     }
 
-    public void setImage(Image image) {
-        this.image = image;
+    public void setImageNumber(int imageNumber) {
+        this.imageNumber = imageNumber;
     }
 }
