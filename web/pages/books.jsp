@@ -18,21 +18,26 @@
     <div class="books">
 
         <h3>Жанр: ${param.genre_name}</h3>
-        <h3>ID жанра в базе: ${param.genre_id}</h3>
 
-        <% int counter = 0;
-            for (Book book : bookList.getBooksByGenre(genreId)) { %>
-            <div class="bookItem">
-                <%=book.getName()%><br>
-                <%=book.getAuthor()%><br>
-                <%=book.getPageCount()%><br>
-                <%=book.getPublisher()%><br>
-                <%=book.getYear()%><br>
-                <%=book.getIsbn()%><br>
-                <%=book.getImageNumber()%><br>
-            </div>
-        <% counter++;} %>
+        <% for (Book book : bookList.getBooksByGenre(genreId)) { %>
+                <div class="bookItem">
+                    <div style="height: 10%"><strong><a href="#"><%=book.getName()%></a></strong></div>
+                    <a href="#"><img src="../images/book_img/<%=book.getImageNumber()%>.jpg"></a>
+                    <p><span>Автор: <%=book.getAuthor()%><br></span>
+                    <% if (book.getPageCount() != 0) {%>
+                    <small>Страниц: <%=book.getPageCount()%></small><br>
+                    <%}%>
+                    <% if (!book.getPublisher().isEmpty()) {%>
+                    <small>Издательство: <%=book.getPublisher()%></small><br>
+                    <%}%>
+                    <% if (book.getYear() != 0) {%>
+                    <small>Год: <%=book.getYear()%></small><br>
+                    <%}%>
+                    <% if (!book.getIsbn().isEmpty()) {%>
+                    <small>ISBN: <%=book.getIsbn()%></small><br></p>
+                    <%}%>
+                </div>
+        <% } %>
 
-        <h3>List have <%=counter%> elements (!!!bug if 0)</h3>
     </div>
 </div>
