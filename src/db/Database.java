@@ -12,8 +12,8 @@ public class Database {
 
     public static DataSource getDataSource() {
         try {
-            initialContext = new InitialContext();
-            dataSource = (DataSource) initialContext.lookup("jdbc/Library");
+            if (initialContext == null) initialContext = new InitialContext();
+            if (dataSource == null) dataSource = (DataSource) initialContext.lookup("jdbc/Library");
         } catch (NamingException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }

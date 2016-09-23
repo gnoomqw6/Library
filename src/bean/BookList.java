@@ -46,12 +46,12 @@ public class BookList {
     }
 
     public ArrayList<Book> getBooksByGenre(int id) {
-        return getBooks("select book.id, book.name, genre_id, genre.name as genre," +
-                "author.fio, page_count, publisher.name as publisher," +
-                "publish_year, isbn, image_number from book" +
-                "inner join author on book.author_id = author.id" +
-                "inner join genre on book.genre_id = genre.id" +
-                "inner join publisher on book.publisher_id = publisher.id" +
-                "where genre_id = " + id + " order by book.name;");
+        return getBooks("select book.id, book.`name`, genre_id, genre.`name` as genre, " +
+                "author.fio, page_count, publisher.`name` as publisher, " +
+                "publish_year, isbn, image_number from book " +
+                "inner join author on book.author_id = author.id " +
+                "inner join genre on book.genre_id = genre.id " +
+                "inner join publisher on book.publisher_id = publisher.id " +
+                "where genre_id = " + id + " order by name;");
     }
 }
