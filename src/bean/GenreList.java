@@ -14,6 +14,7 @@ public class GenreList {
     private ArrayList<Genre> genreArrayList = new ArrayList<>();
 
     private void getGenres() {
+        genreArrayList.add(new Genre("Все книги", 0));
         Statement statement = null;
         ResultSet resultSet = null;
         Connection connection = null;

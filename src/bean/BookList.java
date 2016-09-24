@@ -11,6 +11,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BookList {
+    private String partOfRequest = "select book.id, book.`name`, genre_id, genre.`name` as genre, " +
+            "author.fio, page_count, publisher.`name` as publisher, " +
+            "publish_year, isbn, image_number from book " +
+            "inner join author on book.author_id = author.id " +
+            "inner join genre on book.genre_id = genre.id " +
+            "inner join publisher on book.publisher_id = publisher.id ";
+
     private ArrayList<Book> getBooks(String sqlRequest) {
         ArrayList<Book> bookList = new ArrayList<>();
 
@@ -46,12 +53,14 @@ public class BookList {
     }
 
     public ArrayList<Book> getBooksByGenre(int id) {
-        return getBooks("select book.id, book.`name`, genre_id, genre.`name` as genre, " +
-                "author.fio, page_count, publisher.`name` as publisher, " +
-                "publish_year, isbn, image_number from book " +
-                "inner join author on book.author_id = author.id " +
-                "inner join genre on book.genre_id = genre.id " +
-                "inner join publisher on book.publisher_id = publisher.id " +
-                "where genre_id = " + id + " order by name;");
+        if (id == 0) {     //если выбран пункт "Все книги"
+            return getBooks(partOfRequest + "order by name");
+        }
+        return getBooks(partOfRequest + "where genre_id = " + id + " order by name;");
+    }
+
+    public ArrayList<Book> getBooksByLetter(char letter) {
+        return getBooks(partOfRequest + "where book.name like '" + String.valueOf(letter) +
+                "%' order by name;");
     }
 }

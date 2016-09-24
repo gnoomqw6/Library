@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="content">
     <%@include file="../WEB-INF/jspf/searchForm.jspf"%>
+    <%@include file="../WEB-INF/jspf/letters.jspf"%>
 
     <%request.setCharacterEncoding("UTF-8");
         int genreId = -1;   //задаем начальное значение -1 для последующей проверки и перенаправления в случае, если это значение останется -1
@@ -17,8 +18,7 @@
 
     <div class="books">
 
-        <h3>Жанр: ${param.genre_name}</h3>
-
+        <%--вывод списка книг, удовлетворяющего поиску--%>
         <% for (Book book : bookList.getBooksByGenre(genreId)) { %>
                 <div class="bookItem">
                     <div style="height: 10%"><strong><a href="#"><%=book.getName()%></a></strong></div>
