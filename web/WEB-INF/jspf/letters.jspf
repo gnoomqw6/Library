@@ -1,0 +1,11 @@
+<%@ page import="bean.Letters" %>
+<%@ page pageEncoding="UTF-8" %>
+
+<div class="letters">
+    <%
+        char[] letters = Letters.getLetters();
+        for (int i = 0; i < letters.length; i++) {%>
+            <div style="display: inline"><a href="books.jsp?search_by=letters&letter=<%=letters[i]%>"><%=letters[i]%></a></div>
+        <%}
+    %>
+</div>

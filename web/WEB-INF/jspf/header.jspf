@@ -26,7 +26,7 @@
             <jsp:useBean id="genreList" class="bean.GenreList" scope="application"/>
             <% for (Genre genre : genreList.getGenreList()) { %>
                     <li class="genreItem">
-                        <a href="books.jsp?genre_id=<%=genre.getId()%>&genre_name=<%=genre.getName()%>"><%=genre.getName()%></a>
+                        <a href="books.jsp?search_by=genre&genre_id=<%=genre.getId()%>"><%=genre.getName()%></a>
                     </li>
             <% } %>
         </ul>

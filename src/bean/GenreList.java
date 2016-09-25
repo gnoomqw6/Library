@@ -14,6 +14,7 @@ public class GenreList {
     private ArrayList<Genre> genreArrayList = new ArrayList<>();
 
     private void getGenres() {
+        genreArrayList.add(new Genre("Все книги", 0));  //database haven't genre "all books" so we add it to list manually
         Statement statement = null;
         ResultSet resultSet = null;
         Connection connection = null;
@@ -31,8 +32,8 @@ public class GenreList {
         } finally {
             try {
                 if (statement != null) statement.close();
-                if (resultSet != null)resultSet.close();
-                if (connection != null)connection.close();
+                if (resultSet != null) resultSet.close();
+                if (connection != null) connection.close();
             } catch (SQLException ex) {
                 Logger.getLogger(GenreList.class.getName()).log(Level.SEVERE, null, ex);
             }
