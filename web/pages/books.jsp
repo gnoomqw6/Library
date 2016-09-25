@@ -1,3 +1,5 @@
+<%--header, footer, left menu and search form are in jspf files--%>
+
 <%@ page import="bean.Book" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
@@ -9,9 +11,11 @@
     <%request.setCharacterEncoding("UTF-8");%>
 
     <jsp:useBean id="bookList" class="bean.BookList" scope="page"/>
-    <jsp:useBean id="searchType" class="java.lang.String" scope="page"/>
 
+
+    <%--filling the list depending on the search type--%>
     <%  List<Book> list = new ArrayList<Book>();
+        String searchType = new String();
         if (request.getParameter("search_by") != null) searchType = request.getParameter("search_by");
 
         if (searchType.equals("genre")) {
@@ -23,9 +27,10 @@
         }
     %>
 
+
+    <%--display books for this search--%>
     <div class="books">
 
-        <%--вывод списка книг, удовлетворяющего поиску--%>
         <% if (list.isEmpty()) {%><span><strong>Ничего не найдено</strong></span><%}%>
 
         <% for (Book book : list) { %>

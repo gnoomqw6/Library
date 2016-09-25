@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BookList {
+    //the first part of search request. the second part depends from the request type and will be added in methods below
     private String partOfRequest = "select book.id, book.`name`, genre_id, genre.`name` as genre, " +
             "author.fio, page_count, publisher.`name` as publisher, " +
             "publish_year, isbn, image_number from book " +
@@ -53,14 +54,13 @@ public class BookList {
     }
 
     public ArrayList<Book> getBooksByGenre(int id) {
-        if (id == 0) {     //если выбран пункт "Все книги"
+        if (id == 0) {     //if user has clicked "all books"
             return getBooks(partOfRequest + "order by name");
         }
         return getBooks(partOfRequest + "where genre_id = " + id + " order by name;");
     }
 
     public ArrayList<Book> getBooksByLetter(String letter) {
-        return getBooks(partOfRequest + "where book.name like '" + letter +
-                "%' order by name;");
+        return getBooks(partOfRequest + "where book.name like '" + letter + "%' order by name;");
     }
 }

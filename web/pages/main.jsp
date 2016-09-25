@@ -1,3 +1,4 @@
+<%--header, footer, left menu and search form are in jspf files--%>
 <div class="content">
     <%@include file="../WEB-INF/jspf/searchForm.jspf" %>
     <%@include file="../WEB-INF/jspf/letters.jspf"%>

@@ -3,7 +3,7 @@ package bean;
 public class Letters {
     private static char[] letters = new char[30];
 
-    static {
+    static {                //these letters are for searching books by the first letter (under search form on pages)
         letters[0] = 'А';
         letters[1] = 'Б';
         letters[2] = 'В';
