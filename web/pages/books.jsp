@@ -21,7 +21,7 @@
         if (searchType.equals("genre")) {
             int genreId = Integer.parseInt(request.getParameter("genre_id"));
             list = bookList.getBooksByGenre(genreId);
-        } else if (searchType.equals("letter")) {
+        } else if (searchType.equals("letters")) {
             String letter = request.getParameter("letter");
             list = bookList.getBooksByLetter(letter);
         }
