@@ -59,8 +59,8 @@ public class BookList {
         return getBooks(partOfRequest + "where genre_id = " + id + " order by name;");
     }
 
-    public ArrayList<Book> getBooksByLetter(char letter) {
-        return getBooks(partOfRequest + "where book.name like '" + String.valueOf(letter) +
+    public ArrayList<Book> getBooksByLetter(String letter) {
+        return getBooks(partOfRequest + "where book.name like '" + letter +
                 "%' order by name;");
     }
 }

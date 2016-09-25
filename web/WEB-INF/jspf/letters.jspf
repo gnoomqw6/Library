@@ -5,7 +5,7 @@
     <%
         char[] letters = Letters.getLetters();
         for (int i = 0; i < letters.length; i++) {%>
-            <a href="books.jsp?search_by=letters&letter=<%=letters[i]%>"><%=letters[i]%></a>
+            <div style="display: inline"><a href="books.jsp?search_by=letters&letter=<%=letters[i]%>"><%=letters[i]%></a></div>
         <%}
     %>
 </div>

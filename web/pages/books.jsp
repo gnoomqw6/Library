@@ -1,25 +1,34 @@
 <%@ page import="bean.Book" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="content">
     <%@include file="../WEB-INF/jspf/searchForm.jspf"%>
     <%@include file="../WEB-INF/jspf/letters.jspf"%>
 
-    <%request.setCharacterEncoding("UTF-8");
-        int genreId = -1;   //задаем начальное значение -1 для последующей проверки и перенаправления в случае, если это значение останется -1
-
-        try {
-            genreId = Integer.parseInt(request.getParameter("genre_id"));
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    %>
+    <%request.setCharacterEncoding("UTF-8");%>
 
     <jsp:useBean id="bookList" class="bean.BookList" scope="page"/>
+    <jsp:useBean id="searchType" class="java.lang.String" scope="page"/>
+
+    <%  List<Book> list = new ArrayList<Book>();
+        if (request.getParameter("search_by") != null) searchType = request.getParameter("search_by");
+
+        if (searchType.equals("genre")) {
+            int genreId = Integer.parseInt(request.getParameter("genre_id"));
+            list = bookList.getBooksByGenre(genreId);
+        } else if (searchType.equals("letter")) {
+            String letter = request.getParameter("letter");
+            list = bookList.getBooksByLetter(letter);
+        }
+    %>
 
     <div class="books">
 
         <%--вывод списка книг, удовлетворяющего поиску--%>
-        <% for (Book book : bookList.getBooksByGenre(genreId)) { %>
+        <% if (list.isEmpty()) {%><span><strong>Ничего не найдено</strong></span><%}%>
+
+        <% for (Book book : list) { %>
                 <div class="bookItem">
                     <div style="height: 10%"><strong><a href="#"><%=book.getName()%></a></strong></div>
                     <a href="#"><img src="../images/book_img/<%=book.getImageNumber()%>.jpg"></a>
