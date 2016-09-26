@@ -9,9 +9,7 @@
     <%--redirect to books.jsp if user was searching book by title or by author from main.jsp--%>
     <%
     if (request.getParameter("search_str") != null) {
-        String searchStr = request.getParameter("search_str");
-        String url = "http://localhost:8080/Library_war_exploded/pages/books.jsp?search_str=" + searchStr;
-        response.sendRedirect(url);
+        getServletContext().getRequestDispatcher("/pages/books.jsp").forward(request,response);
     }
     %>
 

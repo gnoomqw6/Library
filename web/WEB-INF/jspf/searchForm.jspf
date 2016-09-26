@@ -1,5 +1,5 @@
 <%@ page pageEncoding="UTF-8" %>
-<form class="searchForm" name="searchForm" method="post">
+<form class="searchForm" name="searchForm" method="get">
     <span>Поиск:</span>
     <%--<select class="selectBy" name="search_by">
         <option class="selectByOption">
@@ -9,6 +9,6 @@
             автору
         </option>
     </select>--%>
-    <input class="searchString" type="text" name="search_str" size="50%"/>
+    <input class="searchString" type="text" name="search_str" size="69%"/>
     <input class="searchButton" type="submit" value="Искать"/>
 </form>
