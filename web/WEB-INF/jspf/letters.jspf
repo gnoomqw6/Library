@@ -3,9 +3,24 @@
 
 <div class="letters">
     <%
+//    string to store selected genre and mark it on the page
+        String selectedLetter = null;
+        if (request.getParameter("letter") != null) {selectedLetter = request.getParameter("letter");}
+
         char[] letters = Letters.getLetters();
-        for (int i = 0; i < letters.length; i++) {%>
-            <div style="display: inline"><a href="books.jsp?search_by=letters&letter=<%=letters[i]%>"><%=letters[i]%></a></div>
-        <%}
+        for (int i = 0; i < letters.length; i++) {
+//            search by digit
+            if (i == 0) {
+                if (selectedLetter != null && selectedLetter.equals("num")) {%>
+                    <div class="selectedLetter"><a href="books.jsp?search_by=letters&letter=num"><%=letters[i]%></a></div>
+                <%} else { %>
+                    <div class="lettersItem"><a href="books.jsp?search_by=letters&letter=num"><%=letters[i]%></a></div>
+                <%}
+               } else if (selectedLetter != null && selectedLetter.equals(Character.toString(letters[i]))){ %>
+                <div class="selectedLetter"><a href="books.jsp?search_by=letters&letter=<%=letters[i]%>"><%=letters[i]%></a></div>
+            <% } else { %>
+                <div class="lettersItem"><a href="books.jsp?search_by=letters&letter=<%=letters[i]%>"><%=letters[i]%></a></div>
+            <% }
+        }
     %>
 </div>

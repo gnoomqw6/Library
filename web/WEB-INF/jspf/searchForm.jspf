@@ -1,14 +1,15 @@
 <%@ page pageEncoding="UTF-8" %>
-<form class="searchForm" name="searchForm" method="post">
-    <span>Поиск по:</span>
-    <select class="selectBy" name="selectBy">
-        <option class="selectByOption">
-            названию
-        </option>
-        <option class="selectByOption">
-            автору
-        </option>
-    </select>
-    <input class="searchString" type="text" name="searchString" size="50%"/>
+<%
+//    string to store selected request and display it in form
+    String search = null;
+    if (request.getParameter("search_str") != null) {search = request.getParameter("search_str");}
+%>
+<form class="searchForm" name="searchForm" method="get">
+    <span>Поиск:</span>
+    <% if (search != null) { %>
+    <input class="searchString" type="text" name="search_str" value="<%=search%>" size="69%"/>
+    <% } else { %>
+    <input class="searchString" type="text" name="search_str" size="69%"/>
+    <% } %>
     <input class="searchButton" type="submit" value="Искать"/>
 </form>
