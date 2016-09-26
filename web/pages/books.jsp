@@ -39,9 +39,13 @@
 
         <% if (list.isEmpty()) {%><span><strong>Ничего не найдено</strong></span><%}%>
 
-        <% for (Book book : list) { %>
+        <% for (Book book : list) {
+            String name = book.getName();
+            if (name.length() > 50) {
+                name = name.substring(0, 50).trim() + "...";
+            }%>
                 <div class="bookItem">
-                    <div style="height: 10%"><strong><a href="#"><%=book.getName()%></a></strong></div>
+                    <div style="height: 10%"><strong><a href="#"><%=name%></a></strong></div>
                     <a href="#"><img src="../images/book_img/<%=book.getImageNumber()%>.jpg"></a>
                     <p><span>Автор: <%=book.getAuthor()%><br></span>
                     <% if (book.getPageCount() != 0) {%>

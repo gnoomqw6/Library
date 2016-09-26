@@ -22,13 +22,25 @@
 
         <h4>Книги по жанрам:</h4>
 
+        <%--ID to store selected genre and mark it on the page--%>
+        <%
+            int selectedGenreId = -1;
+            if (request.getParameter("genre_id") != null) {selectedGenreId = Integer.parseInt(request.getParameter("genre_id"));}
+        %>
+
         <ul>
             <jsp:useBean id="genreList" class="bean.GenreList" scope="application"/>
-            <% for (Genre genre : genreList.getGenreList()) { %>
+            <% for (Genre genre : genreList.getGenreList()) {
+                    if (selectedGenreId == genre.getId()) {%>
+                        <li class="selectedGenre">
+                            <a href="books.jsp?search_by=genre&genre_id=<%=genre.getId()%>"><%=genre.getName()%></a>
+                        </li>
+                    <%} else { %>
                     <li class="genreItem">
                         <a href="books.jsp?search_by=genre&genre_id=<%=genre.getId()%>"><%=genre.getName()%></a>
                     </li>
-            <% } %>
+                    <%}
+            } %>
         </ul>
 
     </div>

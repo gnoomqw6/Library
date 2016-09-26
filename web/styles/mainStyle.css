@@ -118,7 +118,7 @@ body {
     text-decoration: none;
 }
 
-.genreItem:hover {
+.genreItem:hover, .lettersItem:hover {
     color: #FFFFFF !important;
     background: #468CCF;
     background: linear-gradient(top, #8f280e, #000000);
@@ -223,7 +223,7 @@ h2 {
 }
 
 .bookItem a {
-    color: #d7d7d7;
+    color: #68e9ff;
     text-decoration: none;
 }
 
@@ -233,5 +233,40 @@ h2 {
 
 .letters a {
     color: #d7d7d7;
-    margin: 3.5px;
+}
+
+.lettersItem {
+    display: inline;
+    padding: 4px;
+}
+
+.selectedGenre {
+    cursor: pointer;
+    color: #FFFFFF !important;
+    font-weight: bold;
+    background: #468CCF;
+    background: linear-gradient(top, #8f280e, #000000);
+    background: -ms-linear-gradient(top, #8f280e, #000000);
+    background: -webkit-gradient(linear, left top, left bottom, from(#8f280e), to(#000000));
+    background: -moz-linear-gradient(top, #8f280e, #000000);
+}
+
+.selectedGenre a {
+    display: block;
+    padding: 6px 0px 6px 30px;
+    color: #d7d7d7;
+    text-decoration: none;
+}
+
+.selectedLetter {
+    display: inline;
+    padding: 4px;
+    cursor: pointer;
+    color: #FFFFFF !important;
+    font-weight: bold;
+    background: #468CCF;
+    background: linear-gradient(top, #8f280e, #000000);
+    background: -ms-linear-gradient(top, #8f280e, #000000);
+    background: -webkit-gradient(linear, left top, left bottom, from(#8f280e), to(#000000));
+    background: -moz-linear-gradient(top, #8f280e, #000000);
 }
