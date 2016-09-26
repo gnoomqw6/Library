@@ -15,15 +15,21 @@
 
     <%--filling the list depending on the search type--%>
     <%  List<Book> list = new ArrayList<Book>();
-        String searchType = new String();
-        if (request.getParameter("search_by") != null) searchType = request.getParameter("search_by");
+        if (request.getParameter("search_by") != null) {
+            String searchType = request.getParameter("search_by");
 
-        if (searchType.equals("genre")) {
-            int genreId = Integer.parseInt(request.getParameter("genre_id"));
-            list = bookList.getBooksByGenre(genreId);
-        } else if (searchType.equals("letters")) {
-            String letter = request.getParameter("letter");
-            list = bookList.getBooksByLetter(letter);
+            if (searchType.equals("genre")) {
+                int genreId = Integer.parseInt(request.getParameter("genre_id"));
+                list = bookList.getBooksByGenre(genreId);
+            } else if (searchType.equals("letters")) {
+                String letter = request.getParameter("letter");
+                list = bookList.getBooksByLetter(letter);
+            }
+        } else if (request.getParameter("search_str") != null) {
+            String str = request.getParameter("search_str");
+            if (str != null && !str.isEmpty()) {
+                list = bookList.getBooksByString(str);
+            }
         }
     %>
 
