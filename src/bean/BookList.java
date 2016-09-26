@@ -61,7 +61,11 @@ public class BookList {
     }
 
     public ArrayList<Book> getBooksByLetter(String letter) {
-        return getBooks(partOfRequest + "where book.name like '" + letter + "%' order by name;");
+        if (letter.equals("num")) {     //search by digit
+            return getBooks(partOfRequest + "where book.name regexp '^[0-9].*' order by name;");
+        } else {
+            return getBooks(partOfRequest + "where book.name like '" + letter + "%' order by name;");
+        }
     }
 
     public ArrayList<Book> getBooksByString(String str) {

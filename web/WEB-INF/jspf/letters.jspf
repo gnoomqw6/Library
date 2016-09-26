@@ -4,8 +4,12 @@
 <div class="letters">
     <%
         char[] letters = Letters.getLetters();
-        for (int i = 0; i < letters.length; i++) {%>
+        for (int i = 0; i < letters.length; i++) {
+            if (i == 0) {%>     <%--search by digit--%>
+                <div style="display: inline"><a href="books.jsp?search_by=letters&letter=num"><%=letters[i]%></a></div>
+            <% } else { %>
             <div style="display: inline"><a href="books.jsp?search_by=letters&letter=<%=letters[i]%>"><%=letters[i]%></a></div>
-        <%}
+            <%}
+        }
     %>
 </div>
