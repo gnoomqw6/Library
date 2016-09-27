@@ -15,8 +15,9 @@
 
     <%--filling the list depending on the search type--%>
     <%  List<Book> list = new ArrayList<Book>();
+        String searchType = null;
         if (request.getParameter("search_by") != null) {
-            String searchType = request.getParameter("search_by");
+            searchType = request.getParameter("search_by");
 
             if (searchType.equals("genre")) {
                 int genreId = Integer.parseInt(request.getParameter("genre_id"));
@@ -24,6 +25,12 @@
             } else if (searchType.equals("letters")) {
                 String letter = request.getParameter("letter");
                 list = bookList.getBooksByLetter(letter);
+            } else if (searchType.equals("new")) {
+                list = bookList.getNewBooks();
+            } else if (searchType.equals("popular")) {
+                list = bookList.getPopularBooks();
+            } else if (searchType.equals("online")) {
+                list = bookList.getOnlineBooks();
             }
         } else if (request.getParameter("search_str") != null) {
             String str = request.getParameter("search_str");
@@ -45,8 +52,13 @@
                 name = name.substring(0, 50).trim() + "...";
             }%>
                 <div class="bookItem">
+                    <% if(searchType != null && searchType.equals("online")) { %>
                     <div style="height: 10%"><strong><a href="#"><%=name%></a></strong></div>
                     <a href="#"><img src="../images/book_img/<%=book.getImageNumber()%>.jpg"></a>
+                    <% } else { %>
+                    <div style="height: 10%; color: #68e9ff"><strong><%=name%></strong></div>
+                    <img src="../images/book_img/<%=book.getImageNumber()%>.jpg">
+                    <% } %>
                     <p><span>Автор: <%=book.getAuthor()%><br></span>
                     <% if (book.getPageCount() != 0) {%>
                     <small>Страниц: <%=book.getPageCount()%></small><br>

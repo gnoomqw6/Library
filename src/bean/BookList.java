@@ -72,4 +72,24 @@ public class BookList {
         return getBooks(partOfRequest + "where book.name like '%" + str + "%' " +
                 "or author.fio like '%" + str + "%' order by name;");
     }
+
+    public ArrayList<Book> getNewBooks() {
+        return getBooks(partOfRequest + "order by id desc limit 0,9;");
+    }
+
+    public ArrayList<Book> getPopularBooks() {
+        //just simulate - I have no statistic yet
+        int[] arr = new int[9];
+        for (int i = 0; i < 9; i++) {
+            int id = (int) (Math.random() * 503) + 21;
+            arr[i] = id;
+        }
+        return getBooks(partOfRequest + "where book.id in (" + arr[0] + ", " +
+                arr[1] + ", " + arr[2] + ", " + arr[3] + ", " + arr[4] + ", " +
+                arr[5] + ", " + arr[6] + ", " + arr[7] + ", " + arr[8] + ");");
+    }
+
+    public ArrayList<Book> getOnlineBooks() {
+        return getBooks(partOfRequest + "where book.id in (521, 522, 523)");
+    }
 }

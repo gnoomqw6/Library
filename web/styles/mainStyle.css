@@ -51,10 +51,9 @@ body {
     display: inline;
     font-family: arial;
     font-weight: bold;
-    color: #FFFFFF !important;
     text-shadow: 1px 1px 0px #000000;
     box-shadow: 1px 1px 1px #491309;
-    padding: 10px 12px;
+    padding: 10px 0px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 5px;
@@ -64,7 +63,13 @@ body {
     background: -ms-linear-gradient(top,  #8F280E,  #000000);
     background: -webkit-gradient(linear, left top, left bottom, from(#8F280E), to(#000000));
     background: -moz-linear-gradient(top,  #8F280E,  #000000);
+}
+
+.menuItem a {
+    padding: 10px 12px;
     cursor: pointer;
+    color: #d7d7d7;
+    text-decoration: none;
 }
 
 .menuItem:hover {
