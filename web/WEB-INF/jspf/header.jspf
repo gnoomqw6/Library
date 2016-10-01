@@ -78,7 +78,7 @@
             <ul class="menuList">
                 <li class="menuItem"><a href="books.jsp?search_by=new">Новые поступления</a></li>
                 <li class="menuItem"><a href="books.jsp?search_by=popular">Популярные</a></li>
-                <li class="menuItem"><a href="books.jsp?search_by=online">Читать онлайн</a></li>
+                <li class="menuItem"><a href="#">Контакты</a></li>
             </ul>
 
         </div>
