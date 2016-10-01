@@ -52,13 +52,8 @@
                 name = name.substring(0, 50).trim() + "...";
             }%>
                 <div class="bookItem">
-                    <% if(searchType != null && searchType.equals("online")) { %>
-                    <div style="height: 10%"><strong><a href="#"><%=name%></a></strong></div>
-                    <a href="#"><img src="../images/book_img/<%=book.getImageNumber()%>.jpg"></a>
-                    <% } else { %>
                     <div style="height: 10%; color: #68e9ff"><strong><%=name%></strong></div>
                     <img src="../images/book_img/<%=book.getImageNumber()%>.jpg">
-                    <% } %>
                     <p><span>Автор: <%=book.getAuthor()%><br></span>
                     <% if (book.getPageCount() != 0) {%>
                     <small>Страниц: <%=book.getPageCount()%></small><br>
