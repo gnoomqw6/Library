@@ -82,7 +82,7 @@ body {
 
 .user {
     float: right;
-    padding: 0px 10px;
+    padding: 5px 10px;
 }
 
 .user span {
@@ -145,6 +145,11 @@ body {
     padding: 77px 20px 50px 18%;
 }
 
+.content p a {
+    color: #d7d7d7;
+    font-weight: bold;
+}
+
 .searchForm * {
     margin-right: 10px;
 }
@@ -172,7 +177,7 @@ body {
     color: black;
 }
 
-.searchButton, .searchString {
+.searchButton, .searchString, .button {
     color: #FFFFFF !important;
     font-weight: bold;
     text-shadow: 1px 1px 0px #000000;
@@ -283,4 +288,13 @@ h2 {
     background: -ms-linear-gradient(top, #8f280e, #000000);
     background: -webkit-gradient(linear, left top, left bottom, from(#8f280e), to(#000000));
     background: -moz-linear-gradient(top, #8f280e, #000000);
+}
+
+.log_reg form{
+    display: inline-block;
+}
+
+.log_reg {
+    margin-top: 150px;
+    text-align: center;
 }

@@ -27,4 +27,14 @@
         <res-auth>Container</res-auth>
         <res-sharing-scope>Shareable</res-sharing-scope>
     </resource-ref>
+
+    <servlet>
+        <servlet-name>checkLogin</servlet-name>
+        <servlet-class>servlets.CheckLogin</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>checkLogin</servlet-name>
+        <url-pattern>/ckeck_login</url-pattern>
+    </servlet-mapping>
 </web-app>
