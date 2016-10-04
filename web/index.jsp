@@ -4,14 +4,15 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>Войти в библиотеку</title>
     <link rel="stylesheet" href="styles/loginStyle.css" type="text/css">
-    <style>
+    <%--<style>
         div {
             border: 1px solid black;
         }
-    </style>
+    </style>--%>
 </head>
 <body>
-    <div class="loginBlock">
+    <%response.sendRedirect("pages/main.jsp");%>
+    <%--<div class="loginBlock">
         <div class="hor">
             <div class="vert">
                 <div class="hor">
@@ -56,6 +57,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--%>
 </body>
 </html>
