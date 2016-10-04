@@ -1,6 +1,8 @@
 <%@ page pageEncoding="UTF-8" %>
 
 <%@ page import="bean.Genre" %>
+<%@ page import="java.util.List" %>
+<%@ page import="bean.Book" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -51,7 +53,7 @@
 
         <div class="user">
 
-            <%
+            <%--<%
                 String username = (String) request.getSession().getAttribute("username");
                 if (username == null) {
                     username = request.getParameter("username");
@@ -67,8 +69,27 @@
             %>
 
             <span>Здравствуйте, <%= username %></span><br>
-            <span>Книг в корзине: <%= countBooks %></span>
+            <span>Книг в корзине: <%= countBooks %></span>--%>
 
+            <% if (session.getAttribute("username") == null) {%>
+                <a href="#">Вход</a>
+                <span>|</span>
+                <a href="#">Регистрация</a>
+                <br>
+                <br>
+            <%} else {%>
+                <span>Здравствуйте, <%= session.getAttribute("username") %></span>
+                <span>|</span>
+                <a href="#">Выход</a>
+                <br>
+                <br>
+            <%}%>
+            <span>Книг в <a href="#">корзине</a>: </span>
+            <% if (session.getAttribute("book_list") == null) {%>
+                <span>0</span>
+            <%} else {%>
+                <span><%= ((List<Book>) session.getAttribute("book_list")).size() %></span>
+            <%}%>
         </div>
 
         <div class="menu">
@@ -76,7 +97,7 @@
             <img class="headerImage" src="../images/book.png" alt="library" />
 
             <ul class="menuList">
-                <li class="menuItem"><a href="books.jsp?search_by=new">Новые поступления</a></li>
+                <li class="menuItem"><a href="books.jsp?search_by=new">Новые</a></li>
                 <li class="menuItem"><a href="books.jsp?search_by=popular">Популярные</a></li>
                 <li class="menuItem"><a href="#">Оплата и доставка</a></li>
                 <li class="menuItem"><a href="#">Контакты</a></li>
