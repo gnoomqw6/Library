@@ -17,7 +17,7 @@
             Войдите, чтобы воспользоваться преимуществами нашей <a href="#">дисконтной программы</a>.
         </p>
 
-        <form name="login_form" action="/ckeck_login" method="post">
+        <form name="login_form" action="<%= request.getContextPath() %>/ckeck_login" method="post">
             <table cellpadding="5px">
                 <tr>
                     <td>Логин (e-mail):</td>

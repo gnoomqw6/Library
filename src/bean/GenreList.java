@@ -21,7 +21,8 @@ public class GenreList {
         try {
             connection = Database.getDataSource().getConnection();
             statement = connection.createStatement();
-            resultSet = statement.executeQuery("select * from genre ORDER BY name");
+            statement.execute("use library;");
+            resultSet = statement.executeQuery("select * from genre ORDER BY name;");
             while (resultSet.next()) {
                 Genre genre = new Genre(resultSet.getString("name"), resultSet.getInt("id"));
                 genreArrayList.add(genre);
