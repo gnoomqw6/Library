@@ -54,7 +54,11 @@
 
         <div class="user">
 
-            <% if (session.getAttribute("user") == null) {%>
+            <% if (session.getAttribute("user") == null) {
+                if (!request.getRequestURI().endsWith("login.jsp")) {
+                    String prePage = request.getRequestURI() + "?" + request.getQueryString();
+                    session.setAttribute("pre_page", prePage);
+                }%>
                 <a href="../pages/login.jsp">Вход</a>
                 <span>|</span>
                 <a href="#">Регистрация</a>
@@ -81,9 +85,18 @@
 
             <img class="headerImage" src="../images/book.png" alt="library" />
 
+            <%--class ("menuItemSelected" or "menuItem") depends on request (to mark current page in menuList)--%>
             <ul class="menuList">
-                <li class="menuItem"><a href="books.jsp?search_by=new">Новые</a></li>
-                <li class="menuItem"><a href="books.jsp?search_by=popular">Популярные</a></li>
+                <li <%if (request.getParameter("search_by") != null && request.getParameter("search_by").equals("new")) {%>
+                        class="menuItemSelected">
+                    <%} else {%>
+                        class="menuItem"><%}%><a href="books.jsp?search_by=new">Новые</a></li>
+
+                <li <%if (request.getParameter("search_by") != null && request.getParameter("search_by").equals("popular")) {%>
+                        class="menuItemSelected">
+                    <%} else {%>
+                        class="menuItem"><%}%><a href="books.jsp?search_by=popular">Популярные</a></li>
+
                 <li class="menuItem"><a href="#">Оплата и доставка</a></li>
                 <li class="menuItem"><a href="#">Контакты</a></li>
                 <li class="menuItem"><a href="#">Корзина</a></li>

@@ -16,7 +16,6 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@WebServlet(name = "CheckLogin")
 public class CheckLogin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         process(request, response);
@@ -52,7 +51,11 @@ public class CheckLogin extends HttpServlet {
                         User user = new User(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getString("email"),
                                 resultSet.getInt("discount"), resultSet.getInt("total_sum"));
                         request.getSession().setAttribute("user", user);
-                        redirectUrl += "/pages/main.jsp";
+                        if (request.getSession().getAttribute("pre_page") == null) {
+                            redirectUrl += "/pages/main.jsp";
+                        } else {
+                            redirectUrl = request.getSession().getAttribute("pre_page").toString();
+                        }
                     }
                 } else {
                     redirectUrl += "/pages/login.jsp?err=1";
