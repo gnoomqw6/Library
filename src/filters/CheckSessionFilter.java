@@ -19,7 +19,7 @@ public class CheckSessionFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) resp;
         HttpSession session = request.getSession(false);
         if (session == null || session.isNew()) {
-            response.sendRedirect(request.getContextPath() + "/pages/main.jsp");
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
         } else {
             chain.doFilter(req, resp);
         }

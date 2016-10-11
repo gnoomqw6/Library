@@ -28,12 +28,24 @@
         <res-sharing-scope>Shareable</res-sharing-scope>
     </resource-ref>
 
-    <servlet-mapping>
-        <servlet-name>{"CheckLogin":/check_login}</servlet-name>
-        <url-pattern>{"CheckLogin":/check_login}</url-pattern>
+    <servlet>
+        <servlet-name>CheckLogin</servlet-name>
+        <servlet-class>servlets.CheckLogin</servlet-class>
+    </servlet>
 
+    <servlet>
         <servlet-name>KillSession</servlet-name>
-        <url-pattern>{"KillSession":/kill_session}</url-pattern>
+        <servlet-class>servlets.KillSession</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CheckLogin</servlet-name>
+        <url-pattern>/check_login</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>KillSession</servlet-name>
+        <url-pattern>/kill_session</url-pattern>
     </servlet-mapping>
 
     <filter>
