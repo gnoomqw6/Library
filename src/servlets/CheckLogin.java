@@ -43,7 +43,7 @@ public class CheckLogin extends HttpServlet {
             try {
                 connection = Database.getDataSource().getConnection();
                 statement = connection.createStatement();
-                resultSet = statement.executeQuery("SELECT * FROM users WHERE email = '" + login + "'");
+                resultSet = statement.executeQuery("SELECT * FROM users WHERE email = '" + login + "' limit 1;");
                 if (resultSet.first()) {
                     if (!resultSet.getString("password").equals(password)) {
                         redirectUrl += "/pages/login.jsp?err=1";

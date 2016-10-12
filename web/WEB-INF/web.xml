@@ -38,6 +38,11 @@
         <servlet-class>servlets.KillSession</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>servlets.Register</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>CheckLogin</servlet-name>
         <url-pattern>/check_login</url-pattern>
@@ -46,6 +51,11 @@
     <servlet-mapping>
         <servlet-name>KillSession</servlet-name>
         <url-pattern>/kill_session</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
     <filter>

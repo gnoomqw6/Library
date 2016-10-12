@@ -20,12 +20,11 @@
             Все поля обязательны для заполнения.
         </p>
 
-        <form name="register_form" action="#" method="post" onsubmit="return validateForm()">
+        <form name="register_form" action="<%= request.getContextPath() %>/register" method="post" onsubmit="return validateForm()">
             <table cellpadding="5px">
                 <tr>
                     <td>Логин (e-mail):</td>
                     <td><input type="email" name="login" placeholder="example@ex.com"></td>
-                    <td><input type="button" name="checkBtn" value="Проверить" onclick="<%--TODO JS--%>"></td>
                 </tr>
                 <tr>
                     <td>Пароль:</td>
