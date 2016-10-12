@@ -5,7 +5,7 @@
         <%request.setCharacterEncoding("UTF-8");%>
         <%response.setCharacterEncoding("UTF-8");%>
 
-    <%--redirect to books.jsp if user was searching book by title or by author from main.jsp--%>
+    <%--redirect to books.jsp if user was searching book by title or by author from login.jsp--%>
     <%
         if (request.getParameter("search_str") != null) {
             getServletContext().getRequestDispatcher("/pages/books.jsp").forward(request,response);

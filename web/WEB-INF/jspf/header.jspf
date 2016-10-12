@@ -55,13 +55,13 @@
         <div class="user">
 
             <% if (session.getAttribute("user") == null) {
-                if (!request.getRequestURI().endsWith("login.jsp")) {
+                if (!request.getRequestURI().endsWith("login.jsp") && !request.getRequestURI().endsWith("register.jsp")) {
                     String prePage = request.getRequestURI() + "?" + request.getQueryString();
                     session.setAttribute("pre_page", prePage);
                 }%>
                 <a href="../pages/login.jsp">Вход</a>
                 <span>|</span>
-                <a href="#">Регистрация</a>
+                <a href="../pages/register.jsp">Регистрация</a>
                 <br>
                 <br>
             <%} else {%>

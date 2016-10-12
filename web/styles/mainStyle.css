@@ -10,10 +10,12 @@ body {
     color: #d7d7d7;
     font-family: arial;
     cursor: default;
+    min-width: 1000px;
 }
 
 .container {
     height: 100%;
+    min-width: 1000px;
 }
 
 .header {
@@ -30,6 +32,7 @@ body {
     /* W3C Markup */
     background-image: linear-gradient(to bottom, #6d000b 0%, #1E1E1E 100%);
     width: 100%;
+    min-width: 850px;
     color: white;
     margin: 0;
     height: 50px;
