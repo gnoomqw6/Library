@@ -36,7 +36,7 @@
                 </tr>
                 <tr>
                     <td>Как Вас зовут:</td>
-                    <td><input type="text" name="userName" placeholder="Матвей"></td>
+                    <td><input type="text" name="username" placeholder="Матвей"></td>
                 </tr>
                 <tr>
                     <td></td>
