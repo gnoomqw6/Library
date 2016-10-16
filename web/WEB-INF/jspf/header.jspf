@@ -67,6 +67,8 @@
             <%} else {%>
                 <span>Здравствуйте, <%= ((User)session.getAttribute("user")).getName() %></span>
                 <span>|</span>
+                <a href="#">Профиль</a>
+                <span>|</span>
                 <a href="<%= request.getContextPath() %>/kill_session">Выход</a>
                 <br>
                 <br>
