@@ -6,7 +6,7 @@ function validateForm() {
     var mail = document.forms["register_form"]["login"].value;
     var pass = document.forms["register_form"]["password"].value;
     var passRe = document.forms["register_form"]["passwordRetype"].value;
-    var username = document.forms["register_form"]["userName"].value;
+    var username = document.forms["register_form"]["username"].value;
 
     if (mail == null || mail == "" || mail.match(/\s+/)) {
         alert("Логин обязателен для заполнения. Недопустимо использование русских символов и пробелов.");

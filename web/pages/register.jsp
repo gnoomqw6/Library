@@ -48,7 +48,7 @@
 
         <%
             if (request.getParameter("err") != null) {%>
-        <p style="color: #ff8789">Неверный логин или пароль!</p>
+        <p style="color: #ff8789">Пользователь с таким логином уже зарегистрирован!</p>
         <%}
         %>
     </div>
