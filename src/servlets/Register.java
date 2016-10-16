@@ -38,19 +38,20 @@ public class Register extends HttpServlet {
             connection = Database.getDataSource().getConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery("SELECT * FROM users WHERE email = '" + login + "' limit 1;");
-//            TODO redirect back or insert data to database and redirect to 'pre_page' or to index.jsp
-            if (resultSet.first()) {
-                redirectUrl += "/pages/register.jsp?err=1&name=" + username;
+            if (resultSet.first()) {        //check if login is already registered
+                redirectUrl += "/pages/register.jsp?err=duplicate_username&username=" + username + "&login=" + login;
             } else {
                 if (request.getSession().getAttribute("pre_page") != null) {
                     redirectUrl = request.getSession().getAttribute("pre_page").toString();
                 } else {
                     redirectUrl += "/pages/main.jsp?reg=1";
                 }
+//                insert new user into database
                 statement.execute("insert into users (`name`, `email`, `password`) VALUES " +
                         "('" + username + "', '" + login + "', '" + password + "');");
+//                and get it's id
                 statement1 = connection.createStatement();
-                resultSet1 = statement1.executeQuery("SELECT * FROM users WHERE `email` = '" + login +
+                resultSet1 = statement1.executeQuery("SELECT `id` FROM users WHERE `email` = '" + login +
                         "' limit 1;");
                 if (resultSet1.first()) {
                     User user = new User(resultSet1.getInt("id"), username, login, 0, 0);
@@ -60,15 +61,15 @@ public class Register extends HttpServlet {
             response.sendRedirect(redirectUrl);
         } catch (SQLException e) {
             e.printStackTrace();
-            redirectUrl = request.getContextPath() + "/pages/register.jsp?err=1&name=" + username;
+            redirectUrl = request.getContextPath() + "/pages/register.jsp?err=sql&username=" + username + "&login=" + login;
             response.sendRedirect(redirectUrl);
         } finally {
             try {
-                resultSet.close();
-                resultSet1.close();
-                statement.close();
-                statement1.close();
-                connection.close();
+                if (resultSet != null) resultSet.close();
+                if (resultSet1 != null) resultSet1.close();
+                if (statement != null) statement.close();
+                if (statement1 != null) statement1.close();
+                if (connection != null) connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

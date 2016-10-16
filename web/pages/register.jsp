@@ -24,33 +24,47 @@
             <table cellpadding="5px">
                 <tr>
                     <td>Логин (e-mail):</td>
-                    <td><input type="email" name="login" placeholder="example@ex.com"></td>
+                    <td>
+                        <% if (request.getParameter("login") != null && !request.getParameter("login").isEmpty()) { %>
+                            <input type="email" name="login" value="<%= request.getParameter("login") %>"/>
+                        <% } else { %>
+                            <input type="email" name="login" placeholder="example@ex.com"/>
+                        <% } %>
+                    </td>
                 </tr>
                 <tr>
                     <td>Пароль:</td>
-                    <td><input type="password" name="password" placeholder="до 12 символов"></td>
+                    <td><input type="password" name="password" placeholder="до 12 символов"/></td>
                 </tr>
                 <tr>
                     <td>Повторите пароль:</td>
-                    <td><input type="password" name="passwordRetype" placeholder="******"></td>
+                    <td><input type="password" name="passwordRetype" placeholder="******"/></td>
                 </tr>
                 <tr>
                     <td>Как Вас зовут:</td>
-                    <td><input type="text" name="username" placeholder="Матвей"></td>
+                    <td>
+                        <% if (request.getParameter("username") != null && !request.getParameter("username").isEmpty()) { %>
+                            <input type="text" name="username" value="<%= request.getParameter("username") %>"/>
+                        <% } else { %>
+                            <input type="text" name="username" placeholder="Матвей"/>
+                        <% } %>
+                    </td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input class="button" type="submit" value="Зарегистрироваться"></td>
+                    <td><input class="button" type="submit" value="Зарегистрироваться"/></td>
                 </tr>
             </table>
 
         </form>
 
-        <%
-            if (request.getParameter("err") != null) {%>
-        <p style="color: #ff8789">Пользователь с таким логином уже зарегистрирован!</p>
-        <%}
-        %>
+        <% if (request.getParameter("err") != null) {
+            if (request.getParameter("err").equals("duplicate_username")) {%>
+                <p style="color: #ff8789">Пользователь с таким логином уже зарегистрирован!</p>
+        <%  } else if (request.getParameter("err").equals("sql")) {%>
+                <p style="color: #ff8789">При регистрации возникла непредвиденная ошибка. Приносим свои извинения.</p>
+        <%  }
+        } %>
     </div>
 
 </div>
