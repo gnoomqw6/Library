@@ -13,7 +13,7 @@
     <jsp:useBean id="bookList" class="bean.BookList" scope="page"/>
 
 
-    <%--filling the list depending on the search type--%>
+    <%--filling the list depending on the search type!--%>
     <%  List<Book> list = new ArrayList<Book>();
         String searchType = null;
         if (request.getParameter("search_by") != null) {
