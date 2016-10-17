@@ -117,6 +117,11 @@ body {
     margin-right: 5px;
 }
 
+.bucketCounter {
+    padding-top: 5px;
+    border: 1px solid white;
+}
+
 .genresBack {
     padding-top: 75px;
     padding-left: 30px;

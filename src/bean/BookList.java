@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 public class BookList {
     //the first part of search request. the second part depends from the request type and will be added in methods below
-    private String partOfRequest = "select book.id, book.`name`, genre_id, genre.`name` as genre, " +
+    private String partOfRequest = "select book.id, book.price, book.`name`, genre_id, genre.`name` as genre, " +
             "author.fio, page_count, publisher.`name` as publisher, " +
             "publish_year, isbn, image_number from book " +
             "inner join author on book.author_id = author.id " +
@@ -32,7 +32,8 @@ public class BookList {
             resultSet = statement.executeQuery(sqlRequest);
 
             while (resultSet.next()) {
-                Book book = new Book(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getInt("page_count"),
+                Book book = new Book(resultSet.getInt("id"), resultSet.getString("name"),
+                        resultSet.getInt("price"), resultSet.getInt("page_count"),
                         resultSet.getString("isbn"), resultSet.getString("genre"),
                         resultSet.getString("fio"), resultSet.getInt("publish_year"),
                         resultSet.getString("publisher"), resultSet.getInt("image_number"));

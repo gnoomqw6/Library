@@ -63,7 +63,6 @@
                 <span>|</span>
                 <a href="../pages/register.jsp">Регистрация</a>
                 <br>
-                <br>
             <%} else {%>
                 <span>Здравствуйте, <%= ((User)session.getAttribute("user")).getName() %></span>
                 <span>|</span>
@@ -71,13 +70,12 @@
                 <span>|</span>
                 <a href="<%= request.getContextPath() %>/kill_session">Выход</a>
                 <br>
-                <br>
             <%}%>
-            <span>Книг в <a href="#">корзине</a>: </span>
+            <span class="bucketCounter">Книг в <a href="#">корзине</a>: </span>
             <% if (session.getAttribute("book_list") == null) {%>
-                <span>0</span>
+                <span class="bucketCounter">0</span>
             <%} else {%>
-                <span><%= ((List<Book>) session.getAttribute("book_list")).size() %></span>
+                <span class="bucketCounter"><%= ((List<Book>) session.getAttribute("book_list")).size() %></span>
             <%}%>
 
         </div>

@@ -3,7 +3,7 @@ package bean;
 public class Book {
     private int id;
     private String name;
-    private byte[] content;
+    private int price;
     private int pageCount;
     private String isbn;
     private String genre;
@@ -15,9 +15,10 @@ public class Book {
     public Book() {
     }
 
-    public Book(int id, String name, int pageCount, String isbn, String genre, String author, int year, String publisher, int imageNumber) {
+    public Book(int id, String name, int price, int pageCount, String isbn, String genre, String author, int year, String publisher, int imageNumber) {
         this.id = id;
         this.name = name;
+        this.price = price;
         this.pageCount = pageCount;
         this.isbn = isbn;
         this.genre = genre;
@@ -35,8 +36,8 @@ public class Book {
         return name;
     }
 
-    public byte[] getContent() {
-        return content;
+    public int getPrice() {
+        return price;
     }
 
     public int getPageCount() {
