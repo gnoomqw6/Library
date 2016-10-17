@@ -55,25 +55,25 @@
                     <div style="height: 10%; color: #68e9ff"><strong><%=name%></strong></div>
                     <img src="../images/book_img/<%=book.getImageNumber()%>.jpg">
                     <p>
-                        <span>Жанр: <%=book.getGenre()%><br></span>
                         <span>Автор: <%=book.getAuthor()%><br></span>
+                        <small>Жанр: <%=book.getGenre()%><br></small>
                         <% if (book.getPageCount() != 0) {%>
-                        <small>Страниц: <%=book.getPageCount()%></small><br>
+                            <small>Страниц: <%=book.getPageCount()%></small><br>
                         <%}%>
                         <% if (!book.getPublisher().isEmpty()) {%>
-                        <small>Издательство: <%=book.getPublisher()%></small><br>
+                            <small>Издательство: <%=book.getPublisher()%></small><br>
                         <%}%>
                         <% if (book.getYear() != 0) {%>
-                        <small>Год: <%=book.getYear()%></small><br>
+                            <small>Год: <%=book.getYear()%></small><br>
                         <%}%>
                         <% if (!book.getIsbn().isEmpty()) {%>
-                        <small>ISBN: <%=book.getIsbn()%></small><br>
+                            <small>ISBN: <%=book.getIsbn()%></small><br>
+                        <%}%>
                         <div>
-                            <strong>Цена: <%=book.getPrice()%></strong>
-                            <input type="button" value="Купить"/>
+                            <strong>Цена: <%=book.getPriceStr()%> руб.</strong>
+                            <input type="button" class="button" value="Купить"/>
                         </div>
                     </p>
-                    <%}%>
                 </div>
         <% } %>
 

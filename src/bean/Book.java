@@ -40,6 +40,12 @@ public class Book {
         return price;
     }
 
+    public String getPriceStr() {
+        String priceStr = String.valueOf(price);
+        return priceStr.substring(0, priceStr.length() - 2) + ","
+                + priceStr.substring(priceStr.length() - 2, priceStr.length());
+    }
+
     public int getPageCount() {
         return pageCount;
     }
