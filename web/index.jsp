@@ -11,6 +11,7 @@
     </style>--%>
 </head>
 <body>
+
     <%response.sendRedirect("pages/main.jsp");%>
     <%--<div class="loginBlock">
         <div class="hor">

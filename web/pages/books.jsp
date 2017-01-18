@@ -12,7 +12,6 @@
 
     <jsp:useBean id="bookList" class="bean.BookList" scope="page"/>
 
-
     <%--filling the list depending on the search type!--%>
     <%  List<Book> list = new ArrayList<Book>();
         String searchType = null;
@@ -71,7 +70,8 @@
                         <%}%>
                         <div>
                             <strong>Цена: <%=book.getPriceStr()%> руб.</strong>
-                            <input type="button" class="button" value="Купить"/>
+                            <input type="button" class="button" value="Купить"
+                                onclick=<%=orderList.add(book)%>/>
                         </div>
                     </p>
                 </div>

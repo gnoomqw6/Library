@@ -4,6 +4,7 @@
 <%@ page import="bean.Genre" %>
 <%@ page import="bean.User" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -71,12 +72,23 @@
                 <a href="<%= request.getContextPath() %>/kill_session">Выход</a>
                 <br>
             <%}%>
+
+            <jsp:useBean id="orderList" class="java.util.ArrayList" scope="page"/>
+            <%if (session.getAttribute("book_list") == null) {
+                orderList = new ArrayList();
+                session.setAttribute("book_list", orderList);
+            } else {
+                if (orderList == null || orderList.isEmpty()) {
+                    orderList = (ArrayList) session.getAttribute("book_list");
+                }
+            }%>
+
             <span class="bucketCounter">Книг в <a href="#">корзине</a>: </span>
-            <% if (session.getAttribute("book_list") == null) {%>
+            <%--<% if (session.getAttribute("book_list") == null) {%>
                 <span class="bucketCounter">0</span>
-            <%} else {%>
-                <span class="bucketCounter"><%= ((List<Book>) session.getAttribute("book_list")).size() %></span>
-            <%}%>
+            <%} else {%>--%>
+                <span class="bucketCounter"><%= orderList.size() %></span>
+            <%--<%}%>--%>
 
         </div>
 

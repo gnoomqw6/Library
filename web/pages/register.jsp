@@ -26,27 +26,27 @@
                     <td>Логин (e-mail):</td>
                     <td>
                         <% if (request.getParameter("login") != null && !request.getParameter("login").isEmpty()) { %>
-                            <input type="email" name="login" value="<%= request.getParameter("login") %>"/>
+                            <input type="email" name="login" required value="<%= request.getParameter("login") %>"/>
                         <% } else { %>
-                            <input type="email" name="login" placeholder="example@ex.com"/>
+                            <input type="email" name="login" placeholder="example@ex.com" required/>
                         <% } %>
                     </td>
                 </tr>
                 <tr>
                     <td>Пароль:</td>
-                    <td><input type="password" name="password" placeholder="до 12 символов"/></td>
+                    <td><input type="password" name="password" placeholder="до 12 символов" required/></td>
                 </tr>
                 <tr>
                     <td>Повторите пароль:</td>
-                    <td><input type="password" name="passwordRetype" placeholder="******"/></td>
+                    <td><input type="password" name="passwordRetype" placeholder="******" required/></td>
                 </tr>
                 <tr>
                     <td>Как Вас зовут:</td>
                     <td>
                         <% if (request.getParameter("username") != null && !request.getParameter("username").isEmpty()) { %>
-                            <input type="text" name="username" value="<%= request.getParameter("username") %>"/>
+                            <input type="text" name="username" required value="<%= request.getParameter("username") %>"/>
                         <% } else { %>
-                            <input type="text" name="username" placeholder="Матвей"/>
+                            <input type="text" name="username" placeholder="Матвей" required/>
                         <% } %>
                     </td>
                 </tr>

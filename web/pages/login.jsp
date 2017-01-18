@@ -21,11 +21,11 @@
             <table cellpadding="5px">
                 <tr>
                     <td>Логин (e-mail):</td>
-                    <td><input type="email" name="login"></td>
+                    <td><input type="email" name="login" required></td>
                 </tr>
                 <tr>
                     <td>Пароль:</td>
-                    <td><input type="password" name="password"></td>
+                    <td><input type="password" name="password" required></td>
                 </tr>
                 <tr>
                     <td></td>
