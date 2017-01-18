@@ -1,6 +1,10 @@
 <%@ page pageEncoding="UTF-8" %>
 
+<%@ page import="bean.Book" %>
 <%@ page import="bean.Genre" %>
+<%@ page import="bean.User" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -22,13 +26,25 @@
 
         <h4>Книги по жанрам:</h4>
 
+        <%--ID to store selected genre and mark it on the page--%>
+        <%
+            int selectedGenreId = -1;
+            if (request.getParameter("genre_id") != null) {selectedGenreId = Integer.parseInt(request.getParameter("genre_id"));}
+        %>
+
         <ul>
             <jsp:useBean id="genreList" class="bean.GenreList" scope="application"/>
-            <% for (Genre genre : genreList.getGenreList()) { %>
+            <% for (Genre genre : genreList.getGenreList()) {
+                    if (selectedGenreId == genre.getId()) {%>
+                        <li class="selectedGenre">
+                            <a href="books.jsp?search_by=genre&genre_id=<%=genre.getId()%>"><%=genre.getName()%></a>
+                        </li>
+                    <%} else { %>
                     <li class="genreItem">
-                        <a href="books.jsp?genre_id=<%=genre.getId()%>&genre_name=<%=genre.getName()%>"><%=genre.getName()%></a>
+                        <a href="books.jsp?search_by=genre&genre_id=<%=genre.getId()%>"><%=genre.getName()%></a>
                     </li>
-            <% } %>
+                    <%}
+            } %>
         </ul>
 
     </div>
@@ -39,35 +55,63 @@
 
         <div class="user">
 
-            <%
-                String username = (String) request.getSession().getAttribute("username");
-                if (username == null) {
-                    username = request.getParameter("username");
-                    request.getSession().setAttribute("username", username);
-                }
+            <% if (session.getAttribute("user") == null) {
+                if (!request.getRequestURI().endsWith("login.jsp") && !request.getRequestURI().endsWith("register.jsp")) {
+                    String prePage = request.getRequestURI() + "?" + request.getQueryString();
+                    session.setAttribute("pre_page", prePage);
+                }%>
+                <a href="../pages/login.jsp">Вход</a>
+                <span>|</span>
+                <a href="../pages/register.jsp">Регистрация</a>
+                <br>
+            <%} else {%>
+                <span>Здравствуйте, <%= ((User)session.getAttribute("user")).getName() %></span>
+                <span>|</span>
+                <a href="#">Профиль</a>
+                <span>|</span>
+                <a href="<%= request.getContextPath() %>/kill_session">Выход</a>
+                <br>
+            <%}%>
 
-                String countBooks;
-                if (request.getSession().getAttribute("box") == null) {
-                    countBooks = "0";
-                } else {
-                    countBooks = (String) request.getSession().getAttribute("box");
+            <jsp:useBean id="orderList" class="java.util.ArrayList" scope="page"/>
+            <%if (session.getAttribute("book_list") == null) {
+                orderList = new ArrayList();
+                session.setAttribute("book_list", orderList);
+            } else {
+                if (orderList == null || orderList.isEmpty()) {
+                    orderList = (ArrayList) session.getAttribute("book_list");
                 }
-            %>
+            }%>
 
-            <span>Здравствуйте, <%= username %></span><br>
-            <span>Книг в корзине: <%= countBooks %></span>
+            <span class="bucketCounter">Книг в <a href="#">корзине</a>: </span>
+            <%--<% if (session.getAttribute("book_list") == null) {%>
+                <span class="bucketCounter">0</span>
+            <%} else {%>--%>
+                <span class="bucketCounter"><%= orderList.size() %></span>
+            <%--<%}%>--%>
 
         </div>
+
 
         <div class="menu">
 
             <img class="headerImage" src="../images/book.png" alt="library" />
 
+            <%--class ("menuItemSelected" or "menuItem") depends on request (to mark current page in menuList)--%>
             <ul class="menuList">
-                <li class="menuItem">Новые поступления</li>
-                <li class="menuItem">Популярные</li>
-                <li class="menuItem">Акции</li>
-                <li class="menuItem">Контакты</li>
+                <li <%if (request.getParameter("search_by") != null && request.getParameter("search_by").equals("new")) {%>
+                        class="menuItemSelected">
+                    <%} else {%>
+                        class="menuItem"><%}%><a href="books.jsp?search_by=new">Новые</a></li>
+
+                <li <%if (request.getParameter("search_by") != null && request.getParameter("search_by").equals("popular")) {%>
+                        class="menuItemSelected">
+                    <%} else {%>
+                        class="menuItem"><%}%><a href="books.jsp?search_by=popular">Популярные</a></li>
+
+                <li class="menuItem"><a href="#">Оплата и доставка</a></li>
+                <li class="menuItem"><a href="#">Контакты</a></li>
+                <li class="menuItem"><a href="#">Корзина</a></li>
             </ul>
 
         </div>

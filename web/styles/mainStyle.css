@@ -9,10 +9,13 @@ body {
     margin: 0;
     color: #d7d7d7;
     font-family: arial;
+    cursor: default;
+    min-width: 1000px;
 }
 
 .container {
     height: 100%;
+    min-width: 1000px;
 }
 
 .header {
@@ -29,6 +32,7 @@ body {
     /* W3C Markup */
     background-image: linear-gradient(to bottom, #6d000b 0%, #1E1E1E 100%);
     width: 100%;
+    min-width: 850px;
     color: white;
     margin: 0;
     height: 50px;
@@ -49,11 +53,9 @@ body {
 .menuItem {
     display: inline;
     font-family: arial;
-    font-weight: bold;
-    color: #FFFFFF !important;
     text-shadow: 1px 1px 0px #000000;
     box-shadow: 1px 1px 1px #491309;
-    padding: 10px 12px;
+    padding: 10px 0px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 5px;
@@ -63,11 +65,36 @@ body {
     background: -ms-linear-gradient(top,  #8F280E,  #000000);
     background: -webkit-gradient(linear, left top, left bottom, from(#8F280E), to(#000000));
     background: -moz-linear-gradient(top,  #8F280E,  #000000);
-    cursor: pointer;
 }
 
-.menuItem:hover {
+.menuItem a,
+.menuItemSelected a{
+    padding: 10px 12px;
+    cursor: pointer;
+    color: #d7d7d7;
+    text-decoration: none;
+}
+
+.menuItem:hover,
+.menuItemSelected {
+    display: inline;
+    font-family: arial;
+    text-shadow: 1px 1px 0px #000000;
+    box-shadow: 1px 1px 1px #491309;
+    padding: 10px 0px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 5px;
+    border: 1px solid #000000;
     color: #FFFFFF !important;
+    background: #52b0ff;
+    background: linear-gradient(top,  #52b0ff,  #000000);
+    background: -ms-linear-gradient(top,  #52b0ff,  #000000);
+    background: -webkit-gradient(linear, left top, left bottom, from(#52b0ff), to(#000000));
+    background: -moz-linear-gradient(top,  #52b0ff,  #000000);
+}
+
+.menuItemSelected {
     background: #468CCF;
     background: linear-gradient(top,  #468CCF,  #000000);
     background: -ms-linear-gradient(top,  #468CCF,  #000000);
@@ -77,7 +104,20 @@ body {
 
 .user {
     float: right;
-    padding: 3px 10px;
+    padding: 5px 10px;
+}
+
+.user span {
+    margin-right: 5px;
+}
+
+.user a {
+    color: #d7d7d7;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.bucketCounter {
 }
 
 .genresBack {
@@ -117,17 +157,22 @@ body {
     text-decoration: none;
 }
 
-.genreItem:hover {
+.genreItem:hover, .lettersItem:hover {
     color: #FFFFFF !important;
-    background: #468CCF;
-    background: linear-gradient(top, #8f280e, #000000);
-    background: -ms-linear-gradient(top, #8f280e, #000000);
-    background: -webkit-gradient(linear, left top, left bottom, from(#8f280e), to(#000000));
-    background: -moz-linear-gradient(top, #8f280e, #000000);
+    background: #b34a41;
+    background: linear-gradient(top, #b34a41, #000000);
+    background: -ms-linear-gradient(top, #b34a41, #000000);
+    background: -webkit-gradient(linear, left top, left bottom, from(#b34a41), to(#000000));
+    background: -moz-linear-gradient(top, #b34a41, #000000);
 }
 
 .content {
     padding: 77px 20px 50px 18%;
+}
+
+.content p a {
+    color: #d7d7d7;
+    font-weight: bold;
 }
 
 .searchForm * {
@@ -157,7 +202,7 @@ body {
     color: black;
 }
 
-.searchButton, .searchString {
+.searchButton, .searchString, .button {
     color: #FFFFFF !important;
     font-weight: bold;
     text-shadow: 1px 1px 0px #000000;
@@ -211,7 +256,7 @@ h2 {
 }
 
 .bookItem {
-    width: 30%;
+    width: 250px;
     height: 550px;
     float: left;
     padding-right: 30px;
@@ -222,6 +267,59 @@ h2 {
 }
 
 .bookItem a {
+    color: #68e9ff;
+    text-decoration: none;
+}
+
+.letters {
+    margin-bottom: 30px;
+}
+
+.letters a {
+    color: #d7d7d7;
+}
+
+.lettersItem {
+    display: inline;
+    padding: 4px;
+}
+
+.selectedGenre {
+    cursor: pointer;
+    color: #FFFFFF !important;
+    font-weight: bold;
+    background: #8f280e;
+    background: linear-gradient(top, #8f280e, #000000);
+    background: -ms-linear-gradient(top, #8f280e, #000000);
+    background: -webkit-gradient(linear, left top, left bottom, from(#8f280e), to(#000000));
+    background: -moz-linear-gradient(top, #8f280e, #000000);
+}
+
+.selectedGenre a {
+    display: block;
+    padding: 6px 0px 6px 30px;
     color: #d7d7d7;
     text-decoration: none;
+}
+
+.selectedLetter {
+    display: inline;
+    padding: 4px;
+    cursor: pointer;
+    color: #FFFFFF !important;
+    font-weight: bold;
+    background: #8f280e;
+    background: linear-gradient(top, #8f280e, #000000);
+    background: -ms-linear-gradient(top, #8f280e, #000000);
+    background: -webkit-gradient(linear, left top, left bottom, from(#8f280e), to(#000000));
+    background: -moz-linear-gradient(top, #8f280e, #000000);
+}
+
+.log_reg form{
+    display: inline-block;
+}
+
+.log_reg {
+    margin-top: 150px;
+    text-align: center;
 }

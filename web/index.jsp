@@ -4,30 +4,32 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>Войти в библиотеку</title>
     <link rel="stylesheet" href="styles/loginStyle.css" type="text/css">
-    <style>
+    <%--<style>
         div {
             border: 1px solid black;
         }
-    </style>
+    </style>--%>
 </head>
 <body>
-    <div class="loginBlock">
+
+    <%response.sendRedirect("pages/main.jsp");%>
+    <%--<div class="loginBlock">
         <div class="hor">
             <div class="vert">
                 <div class="hor">
                     <div class="vert">
                         <div class="hor">
                             <h2>
-                                Добро пожаловать в онлайн-библиотеку
+                                Добро пожаловать в книжный магазин
                             </h2>
                             <img alt="book" src="images/welcomeBook.png" width="300px" align="center" />
                             <p>
                                 У нас Вы найдете огромное количество разножанровой литературы
-                                на любой вкус. Наша библиотека удовлетворит потребности
+                                на любой вкус. Мы удовлетворим потребности
                                 самых требовательных книгоманов!
                             </p>
                             <h3>
-                                Пожалуйста, авторизируйтесь<br>для продолжения работы с библиотекой.
+                                Пожалуйста, авторизируйтесь<br>для продолжения работы с магазином.
                             </h3>
                             <form name="loginForm" action="pages/main.jsp" method="post">
                                 <table>
@@ -56,6 +58,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--%>
 </body>
 </html>
